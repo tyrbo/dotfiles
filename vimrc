@@ -31,11 +31,12 @@ set splitbelow
 set noswapfile
 
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
-set shell=fish
+set shell=bash
 
 set background=dark
-colorscheme base16-railscasts
+let base16colorspace=256
 set t_Co=256
+colorscheme base16-railscasts
 
 augroup vimrc
   autocmd!
@@ -46,4 +47,6 @@ let mapleader = ","
 
 :au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
+set grepprg=ag\ --nogroup\ --nocolor
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
