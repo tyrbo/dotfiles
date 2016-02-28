@@ -6,6 +6,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.emacs.d: emacs.d
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

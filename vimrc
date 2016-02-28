@@ -48,5 +48,5 @@ let mapleader = ","
 :au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 set grepprg=ag\ --nogroup\ --nocolor
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
 let g:ctrlp_use_caching = 0
