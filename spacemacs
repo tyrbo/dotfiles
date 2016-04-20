@@ -26,6 +26,7 @@ values."
      erlang
      git
      html
+     javascript
      markdown
      org
      osx
