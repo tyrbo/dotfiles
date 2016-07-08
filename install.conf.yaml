@@ -1,14 +1,10 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ''
+    ~/.config/dotfiles: ''
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim/
-    ~/.vimrc: vimrc
-    ~/.emacs.d: emacs.d
-    ~/.spacemacs: spacemacs
+    ~/.config/nvim/init.vim: nvim.vim
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [./base16-railscasts.dark.sh]
