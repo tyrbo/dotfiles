@@ -4,6 +4,7 @@
   - mkdir -p ~/.config/nvim
 
 - link:
+    ~/.hyperterm.js: hyperterm.js
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.vim: nvim.vim
