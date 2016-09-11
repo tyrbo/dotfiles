@@ -3,13 +3,14 @@ function! DoRemote(arg)
 endfunction
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script'
-Plug 'nanotech/jellybeans.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
@@ -19,10 +20,12 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
-set background=dark
-colorscheme jellybeans
-
 let g:deoplete#enable_at_startup = 1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+colorscheme OceanicNext
+set background=dark
 
 set showcmd
 set showmode
@@ -40,3 +43,5 @@ set wildmode=list:longest,full
 set splitright
 set splitbelow
 set noswapfile
+
+nmap <c-p> :FZF<CR>

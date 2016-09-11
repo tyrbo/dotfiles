@@ -1,7 +1,9 @@
 - clean: ['~']
 
+- shell:
+  - mkdir -p ~/.config/nvim
+
 - link:
-    ~/.config/dotfiles: ''
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.vim: nvim.vim
