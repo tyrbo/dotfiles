@@ -9,9 +9,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mhartington/oceanic-next'
+Plug 'mxw/vim-jsx'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
@@ -24,6 +26,8 @@ let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:neomake_javascript_enabled_makers = ['eslint']
 
+let $FZF_DEFAULT_COMMAND='ag -g ""'
+
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
@@ -31,7 +35,7 @@ endif
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 set termguicolors
-colorscheme OceanicNext
+silent! colorscheme OceanicNext
 set background=dark
 
 set showcmd
@@ -50,6 +54,7 @@ set wildmode=list:longest,full
 set splitright
 set splitbelow
 set noswapfile
+set listchars=eol:$
 
 nmap <c-p> :FZF<CR>
 
