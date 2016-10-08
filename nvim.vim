@@ -13,11 +13,13 @@ Plug 'mxw/vim-jsx'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
@@ -25,6 +27,7 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:vimfiler_as_default_explorer = 1
 
 let $FZF_DEFAULT_COMMAND='ag -g ""'
 
