@@ -2,12 +2,14 @@
 
 - shell:
   - mkdir -p ~/.config/nvim
+  - mkdir -p ~/.config/fish
 
 - link:
     ~/.hyper.js: hyper.js
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.vim: nvim.vim
+    ~/.config/fish/config.fish: config.fish
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
