@@ -8,10 +8,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script'
-Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'neomake/neomake'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
@@ -38,7 +38,8 @@ endif
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 set termguicolors
-silent! colorscheme OceanicNext
+let g:gruvbox_italic=1
+silent! colorscheme gruvbox
 set background=dark
 
 set showcmd
