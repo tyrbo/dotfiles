@@ -53,12 +53,13 @@
     - name: build tmux (with tc support)
       become: yes
       become_method: sudo
-      shell: wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz && \
+      shell: cd ~ && \
+        wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz && \
         tar -xzvf tmux-2.2.tar.gz && \
         cd tmux-2.2 && \
         ./configure && \
         make && \
-        sudo make install
+        make install
 
     - name: check out dotfiles
       git: repo=https://github.com/tyrbo/dotfiles.git dest=~/.config/dotfiles
