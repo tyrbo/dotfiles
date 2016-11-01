@@ -1,0 +1,48 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: update and upgrade
+      apt:
+        upgrade: dist
+        update_cache: yes
+
+    - name: install sakura
+      apt:
+        name: sakura
+
+    - name: install neovim prerequisites
+      apt: name={{item}} state=installed
+      with_items:
+        - software-properties-common
+        - python-dev
+        - python-pip
+        - python3-dev
+        - python3-pip
+        - python3-setuptools
+        - xclip
+        - silversearcher-ag
+      apt_repository:
+        repo: 'ppa:neovim-ppa/unstable'
+        update_cache: yes
+
+    - name: install neovim
+      apt: name=neovim
+      pip: name=neovim
+      command: curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    - name: install n
+      command: curl -L https://git.io/n-install | bash
+
+    - name: install true color tmux
+      apt: name={{item}} state=installed
+      with_items:
+        - libevent-dev
+        - libncurses-dev
+        - build-essential
+      command: wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz && \
+        tar -xzvf tmux-2.2.tar.gz && \
+        cd tmux-2.2 && \
+        ./configure && \
+        make && \
+        sudo make install
