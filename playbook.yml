@@ -2,47 +2,66 @@
 - hosts: 127.0.0.1
   connection: local
   tasks:
+    - name: add neovim repo
+      become: yes
+      become_method: sudo
+      command: add-apt-repository -y ppa:neovim-ppa/unstable
+
     - name: update and upgrade
+      become: yes
+      become_method: sudo
       apt:
         upgrade: dist
         update_cache: yes
 
-    - name: install sakura
-      apt:
-        name: sakura
 
-    - name: install neovim prerequisites
+    - name: install all prerequisites
+      become: yes
+      become_method: sudo
       apt: name={{item}} state=installed
       with_items:
-        - software-properties-common
+        - build-essential
+        - libevent-dev
+        - libncurses-dev
+        - git
         - python-dev
         - python-pip
         - python3-dev
         - python3-pip
         - python3-setuptools
-        - xclip
+        - sakura
         - silversearcher-ag
-      apt_repository:
-        repo: 'ppa:neovim-ppa/unstable'
-        update_cache: yes
+        - software-properties-common
+        - xclip
 
     - name: install neovim
+      become: yes
+      become_method: sudo
       apt: name=neovim
+
+    - name: install neovim python
+      become: yes
+      become_method: sudo
       pip: name=neovim
+
+    - name: install vim-plug
       command: curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     - name: install n
-      command: curl -L https://git.io/n-install | bash
+      shell: curl -L https://git.io/n-install | bash -s -- -y
 
-    - name: install true color tmux
-      apt: name={{item}} state=installed
-      with_items:
-        - libevent-dev
-        - libncurses-dev
-        - build-essential
-      command: wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz && \
+    - name: build tmux (with tc support)
+      become: yes
+      become_method: sudo
+      shell: wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz && \
         tar -xzvf tmux-2.2.tar.gz && \
         cd tmux-2.2 && \
         ./configure && \
         make && \
         sudo make install
+
+    - name: check out dotfiles
+      git: repo=https://github.com/tyrbo/dotfiles.git dest=~/.config/dotfiles
+
+    - name: install dotfiles
+      shell: cd ~/.config/dotfiles && ./install

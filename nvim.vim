@@ -19,7 +19,6 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
