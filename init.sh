@@ -5,4 +5,4 @@ sudo apt-get install -y ansible
 
 cd $HOME
 curl https://raw.githubusercontent.com/tyrbo/dotfiles/master/playbook.yml > playbook.yml
-ansible-playbook playbook.yml
+ansible-playbook --ask-become-pass playbook.yml
