@@ -29,6 +29,7 @@ let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:vimfiler_as_default_explorer = 1
+let g:jsx_ext_required = 0
 
 let $FZF_DEFAULT_COMMAND='ag -g ""'
 
