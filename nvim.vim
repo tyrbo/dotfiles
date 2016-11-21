@@ -17,7 +17,6 @@ Plug 'othree/yajs.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -29,7 +28,7 @@ let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:vimfiler_as_default_explorer = 1
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 let $FZF_DEFAULT_COMMAND='ag -g ""'
 
@@ -64,14 +63,16 @@ set listchars=eol:$
 
 nmap <c-p> :FZF<CR>
 
-augroup omnifuncs
-  autocmd!
-  autocmd FileType rb setlocal omnifunc=rubycomplete#Complete
-augroup end
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = 0
 
-" tern
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete'
+\]
+
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
