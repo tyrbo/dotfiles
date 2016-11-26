@@ -13,11 +13,10 @@
       apt:
         update_cache: yes
 
-
     - name: install all prerequisites
       become: yes
       become_method: sudo
-      apt: name={{item}} state=installed
+      apt: name={{item}} state=present
       with_items:
         - build-essential
         - libevent-dev
@@ -36,12 +35,12 @@
     - name: install neovim
       become: yes
       become_method: sudo
-      apt: name=neovim
+      apt: name=neovim state=present
 
     - name: install neovim python
       become: yes
       become_method: sudo
-      pip: name=neovim executable=pip3
+      pip: name=neovim executable=pip3 state=present
 
     - name: install vim-plug
       command: curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -65,3 +64,6 @@
 
     - name: install dotfiles
       shell: cd ~/.config/dotfiles && ./install
+
+    - name: install nvim plugins
+      shell: nvim --headless +PlugInstall +qall
