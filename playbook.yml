@@ -45,8 +45,26 @@
     - name: install vim-plug
       command: curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    - name: install n
-      shell: curl -L https://git.io/n-install | bash -s -- -y
+    - name: install nodenv
+      git: repo=https://github.com/nodenv/nodenv.git dest=~/.nodenv
+    
+    - name: build nodenv bash extension
+      shell: cd ~/.nodenv && src/configure && make -C src
+      
+    - name: add nodenv to path
+      lineinfile: dest=~/.bashrc line='export PATH="$HOME/.nodenv/bin:$PATH"'
+      
+    - name: add nodenv init to bashrc
+      lineinfile: dest=~/.bashrc line='eval "$(nodenv init -)"'
+      
+    - name: install node-build
+      git: repo=https://github.com/nodenv/node-build.git dest=~/.nodenv/plugins/node-build
+      
+    - name: install node 6.9.1
+      shell: nodenv install 6.9.1
+      
+    - name: set global node
+      shell: nodenv global 6.9.1
 
     - name: build tmux (with tc support)
       become: yes
