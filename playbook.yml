@@ -12,6 +12,8 @@
       become_method: sudo
       apt:
         update_cache: yes
+      tags:
+        - common
 
     - name: install all prerequisites
       become: yes
@@ -21,6 +23,9 @@
         - build-essential
         - libevent-dev
         - libncurses-dev
+        - libpq-dev
+        - libreadline-dev
+        - libssl-dev
         - git
         - python-dev
         - python-pip
@@ -31,6 +36,9 @@
         - silversearcher-ag
         - software-properties-common
         - xclip
+        - zlib1g-dev
+      tags:
+        - common
 
     - name: install neovim
       become: yes
@@ -52,10 +60,16 @@
       shell: cd ~/.nodenv && src/configure && make -C src
       
     - name: add nodenv to path
-      lineinfile: dest=~/.bashrc line='export PATH="$HOME/.nodenv/bin:$PATH"'
+      lineinfile:
+        dest: ~/.bashrc
+        line: >
+          export PATH="$HOME/.nodenv/bin:$PATH"
       
     - name: add nodenv init to bashrc
-      lineinfile: dest=~/.bashrc line='eval "$(nodenv init -)"'
+      lineinfile:
+        dest: ~/.bashrc
+        line: >
+          eval "$(nodenv init -)"
       
     - name: install node-build
       git: repo=https://github.com/nodenv/node-build.git dest=~/.nodenv/plugins/node-build
@@ -65,6 +79,48 @@
       
     - name: set global node
       shell: nodenv global 6.9.1
+
+    - name: install rbenv
+      git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
+      tags:
+        - ruby
+
+    - name: compile rbenv bash extension
+      shell: cd ~/.rbenv && src/configure && make -C src
+      tags:
+        - ruby
+
+    - name: add rbenv to path
+      lineinfile:
+        dest: ~/.bashrc
+        line: >
+          export PATH="$HOME/.rbenv/bin:$PATH"
+      tags:
+        - ruby
+
+    - name: add rbenv init to bashrc
+      lineinfile:
+        dest: ~/.bashrc
+        line: >
+          eval "$(rbenv init -)"
+      tags:
+        - ruby
+
+    - name: install ruby-build
+      git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
+      tags:
+        - ruby
+
+    - name: install ruby 2.3.3
+      shell: ~/.rbenv/bin/rbenv install 2.3.3
+      tags:
+        - ruby
+
+    - name: set global ruby
+      shell: ~/.rbenv/bin/rbenv global 2.3.3
+      tags:
+        - ruby
+
 
     - name: build tmux (with tc support)
       become: yes
