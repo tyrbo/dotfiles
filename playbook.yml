@@ -75,10 +75,10 @@
       git: repo=https://github.com/nodenv/node-build.git dest=~/.nodenv/plugins/node-build
       
     - name: install node 6.9.1
-      shell: nodenv install 6.9.1
+      shell: ~/.nodenv/bin/nodenv install 6.9.1
       
     - name: set global node
-      shell: nodenv global 6.9.1
+      shell: ~/.nodenv/bin/nodenv global 6.9.1
 
     - name: install rbenv
       git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
