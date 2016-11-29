@@ -3,5 +3,6 @@
 	name = Jonmichael Chambers
 [core]
 	editor = nvim
+	excludesfile = ~/.gitignore
 [push]
 	default = simple

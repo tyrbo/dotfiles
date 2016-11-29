@@ -17,6 +17,7 @@ Plug 'othree/yajs.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -63,12 +64,9 @@ set listchars=eol:$
 
 nmap <c-p> :FZF<CR>
 
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = 0
-
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete'
+  \ 'tern#Complete',
 \]
 
 set completeopt=longest,menuone,preview
