@@ -2,17 +2,12 @@
 
 - shell:
   - mkdir -p ~/.config/nvim
-  - mkdir -p ~/.config/fish
-  - mkdir -p ~/.config/sakura
 
 - link:
-    ~/.hyper.js: hyper.js
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.vim: nvim.vim
-    ~/.config/fish/config.fish: config.fish
-    ~/.config/sakura/sakura.conf: sakura.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
