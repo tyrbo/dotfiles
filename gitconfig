@@ -2,7 +2,7 @@
 	email = jon@tyrbo.net
 	name = Jonmichael Chambers
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
