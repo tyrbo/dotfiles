@@ -1,13 +1,9 @@
 - clean: ['~']
 
-- shell:
-  - mkdir -p ~/.config/nvim
-
 - link:
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
-    ~/.config/nvim/init.vim: nvim.vim
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
