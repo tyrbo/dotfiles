@@ -3,10 +3,6 @@ RUBY_VERSION=2.3.3
 ELIXIR_VERSION=1.4.1
 ERLANG_VERSION=19.2
 
-if [ ! -d "$HOME/.bin" ]; then
-  mkdir "$HOME/.bin"
-fi
-
 if ! command -v brew >/dev/null; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
@@ -36,17 +32,11 @@ if ! command -v asdf >/dev/null; then
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.1
   echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
   echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
+fi
 
-  asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-  asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-  asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-  asdf install ruby $RUBY_VERSION
-  asdf global ruby $RUBY_VERSION
-
-  asdf install elixir $ELIXIR_VERSION
-  asdf global elixir $ELIXIR_VERSION
-
-  asdf install erlang $ERLANG_VERSION
-  asdf global erlang $ERLANG_VERSION
+if [ ! -d "$HOME/.config/dotfiles" ]; then
+  git clone https://github.com/tyrbo/dotfiles.git ~/.config/dotfiles
+  cd $HOME/.config/dotfiles && ./install
 fi
