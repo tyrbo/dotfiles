@@ -8,6 +8,7 @@ if ! command -v brew >/dev/null; then
 fi
 
 brew update
+brew bundle
 brew bundle --file=- <<EOF
 tap "d12frosted/emacs-plus"
 
@@ -21,12 +22,13 @@ brew "libtool"
 brew "unixodbc"
 
 brew "emacs-plus"
-linkapps "emacs-plus"
 
 brew "git"
 brew "mosh"
 brew "the_silver_searcher"
 EOF
+
+brew linkapps "emacs-plus"
 
 if ! command -v asdf >/dev/null; then
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.1
