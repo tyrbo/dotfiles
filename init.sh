@@ -8,7 +8,6 @@ if ! command -v brew >/dev/null; then
 fi
 
 brew update
-brew bundle
 brew bundle --file=- <<EOF
 tap "d12frosted/emacs-plus"
 
