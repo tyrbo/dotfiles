@@ -31,6 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     php
+     javascript
+     swift
+     html
      ruby
      yaml
      ;; ----------------------------------------------------------------
@@ -57,7 +61,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(gruvbox-theme)
+   dotspacemacs-additional-packages '(gruvbox-theme rjsx-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -294,6 +298,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq exec-path (append exec-path '("/Users/jon/.nodenv/shims")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -303,14 +308,53 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;;(defun set-tab-width (n)
+  ;;  (dolist (var '(evil-shift-width
+  ;;                 default-tab-width
+  ;;                 tab-width
+  ;;                 c-basic-offset
+  ;;                 cmake-tab-width
+  ;;                 coffee-tab-width
+  ;;                 cperl-indent-level
+  ;;                 css-indent-offset
+  ;;                 elixir-smie-indent-basic
+  ;;                 enh-ruby-indent-level
+  ;;                 erlang-indent-level
+  ;;                 javascript-indent-level
+  ;;                 js-indent-level
+  ;;                 js2-basic-offset
+  ;;                 js3-indent-level
+  ;;                 lisp-indent-offset
+  ;;                 livescript-tab-width
+  ;;                 mustache-basic-offset
+  ;;                 nxml-child-indent
+  ;;                 perl-indent-level
+  ;;                 puppet-indent-level
+  ;;                 python-indent-offset
+  ;;                 ruby-indent-level
+  ;;                 rust-indent-offset
+  ;;                 scala-indent:step
+  ;;                 sgml-basic-offset
+  ;;                 sh-basic-offset
+  ;;                 web-mode-code-indent-offset
+  ;;                 web-mode-css-indent-offset
+  ;;                 web-mode-markup-indent-offset))
+  ;;  (set (make-local-variable var) n)))
+
+  (push '("\\.js\\'" . rjsx-mode) auto-mode-alist)
   (setq indent-tabs-mode nil)
+  (setq evil-shift-width 2)
+  (setq default-tab-width 2)
   (setq tab-width 2)
 
-  (defvaralias 'sh-basic-offset 'tab-width)
-  (defvaralias 'sh-indentation 'tab-width)
-
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy)))
+  (setq css-indent-offset 2)
+  (setq javascript-indent-level 2)
+  (setq js-indent-level 2)
+  (setq js2-basic-offset 2)
+  (setq js3-indent-level 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
 
   (spacemacs/load-theme 'gruvbox)
   )
@@ -325,7 +369,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help gruvbox-dark-hard-theme gruvbox-dark-theme base16-gruvbox-dark-hard-theme base16-gruvbox-dark-theme base16-gruvbox-dark-medium-theme base16-theme yaml-mode smeargle orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme))))
+    (rjsx-mode tern phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode swift-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode gruvbox-theme autothemer rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help gruvbox-dark-hard-theme gruvbox-dark-theme base16-gruvbox-dark-hard-theme base16-gruvbox-dark-theme base16-gruvbox-dark-medium-theme base16-theme yaml-mode smeargle orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
