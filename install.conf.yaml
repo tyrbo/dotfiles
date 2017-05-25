@@ -4,7 +4,6 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
-    ~/.spacemacs: spacemacs
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
