@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rust-lang/rust.vim'
   Plug 'shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'slashmili/alchemist.vim'
+  Plug 'stephpy/vim-yaml'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-surround'
