@@ -10,5 +10,6 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 
 shopt -s histappend
+stty -ixon
 
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
