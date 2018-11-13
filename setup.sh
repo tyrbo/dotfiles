@@ -3,3 +3,4 @@
 stow bash
 stow git
 stow nvim
+stow tmux
