@@ -1,11 +1,14 @@
 [user]
-	email = jon@tyrbo.net
-	name = Jonmichael Chambers
+  email = jon@tyrbo.net
+  name = Jonmichael Chambers
+  signingkey = 2FAA189650020EA2
+[commit]
+  gpgsign = true
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
-	autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+  autocrlf = input
 [push]
-	default = simple
+  default = simple
 [rerere]
-	enabled = 1
+  enabled = 1

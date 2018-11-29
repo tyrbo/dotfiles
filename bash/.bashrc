@@ -17,8 +17,8 @@ HISTFILESIZE=10000
 shopt -s histappend
 stty -ixon
 
-export CHROME_BIN=/usr/bin/google-chrome
-export PATH=$HOME/.bin:$PATH
+export EDITOR=nvim
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PS1="\[\033[38;5;38m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;105m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;250m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\\$\[$(tput sgr0)\] "
