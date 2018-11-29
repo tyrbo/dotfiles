@@ -1,7 +1,7 @@
 [user]
   email = jon@tyrbo.net
   name = Jonmichael Chambers
-  signingkey = 2FAA189650020EA2
+  signingkey = 4FCA5CE74E109ABC!
 [commit]
   gpgsign = true
 [core]
