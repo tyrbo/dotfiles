@@ -18,9 +18,16 @@ shopt -s histappend
 stty -ixon
 
 export EDITOR=nvim
-export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$HOME/.npm-packages/bin/:$PATH
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 export PS1="\[\033[38;5;38m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;105m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;250m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\\$\[$(tput sgr0)\] "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+eval "$(fasd --init auto)"
+
+export GEM_HOME=~/.gem
+
+alias v='f -e nvim'

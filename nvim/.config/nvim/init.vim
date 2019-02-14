@@ -5,9 +5,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'LnL7/vim-nix'
 Plug 'mhartington/oceanic-next'
+Plug 'rhysd/vim-crystal'
+Plug 'rust-lang/rust.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -19,7 +22,11 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --smart-case --glob "!.git/*"' 
 
 " ALE
+let g:ale_c_parse_compile_commands = 1
+let g:ale_cpp_gcc_options = '-std=c++1z -Wall'
 let g:ale_elixir_elixir_ls_release = '/home/tyrbo/bin/elixir-ls'
+let g:ale_linters = {'rust': ['cargo', 'rls', 'rustfmt']}
+let g:ale_rust_rls_toolchain = 'stable'
 
 " Color scheme
 if (has("termguicolors"))
