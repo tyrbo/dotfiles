@@ -18,7 +18,7 @@ shopt -s histappend
 stty -ixon
 
 export EDITOR=nvim
-export PATH=$HOME/.bin:$HOME/.cargo/bin:$HOME/.npm-packages/bin/:$PATH
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$HOME/.npm-packages/bin/:$HOME/.gem/bin/:$PATH
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
@@ -31,3 +31,5 @@ eval "$(fasd --init auto)"
 export GEM_HOME=~/.gem
 
 alias v='f -e nvim'
+
+xinput disable 13
