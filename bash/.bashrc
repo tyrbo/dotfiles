@@ -33,3 +33,5 @@ export GEM_HOME=~/.gem
 alias v='f -e nvim'
 
 xinput disable 13
+
+export GOPATH=$HOME/go
