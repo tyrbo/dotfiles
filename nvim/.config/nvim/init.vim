@@ -1,18 +1,22 @@
 let g:ale_completion_enabled = 1
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'cespare/vim-toml'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'LnL7/vim-nix'
 Plug 'mhartington/oceanic-next'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 Plug 'rhysd/vim-crystal'
 Plug 'rust-lang/rust.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 call plug#end()
+
+let g:coc_global_extensions = ['coc-pairs', 'coc-rls', 'coc-solargraph', 'coc-tsserver']
 
 " Deoplete
 " let g:deoplete#enable_at_startup = 1

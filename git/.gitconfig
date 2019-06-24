@@ -5,7 +5,7 @@
 [commit]
   gpgsign = true
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
 [push]
@@ -14,3 +14,7 @@
   enabled = 1
 [gpg]
 	program = gpg2
+[credentials]
+	helper = cache
+[credential]
+	helper = cache
